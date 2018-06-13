@@ -20,8 +20,7 @@ private func decodeString(_ encode: String) -> String {
         for _ in 1...num {
             for i in arrEncode.indices {
                 if i == 0 {continue}
-                if arrEncode[i] == "[" { continue }
-                if arrEncode[i] == "]" { continue }
+                if arrEncode[i] == "[" || arrEncode[i] == "]" { continue }
                 if digits.contains(arrEncode[i].unicodeScalars.first!) {
                     finalStr += decodeString(arrEncode[i...].map{String($0)}.joined())
                     break
@@ -35,5 +34,5 @@ private func decodeString(_ encode: String) -> String {
 }
 
 decodeString("4[ab]") //expected: abababab
-decodeString("2[b3[a]]") //expected: baaabaaa
+decodeString("2[b2[a3[q]]]") //expected: baaabaaa
 

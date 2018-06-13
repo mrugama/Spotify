@@ -15,20 +15,27 @@ import UIKit
  2¢, 2¢
  */
 
-private func coinChange(_ coins: [Int], _ amount: Int,_ idx: Int) -> Int {
-    if amount < 0 { return 0 }
-    if amount == 0 { return 1 }
+//private func coinChange(_ coins: [Int], _ amount: Int,_ idx: Int) -> Int {
+//    if amount < 0 {return 0}
+//    if amount == 0 {return 1 }
+//    // means coins over and n>0 so no solution
+//    if idx == coins.count && amount > 0 { return 0 }
+//    return coinChange(coins, amount - coins[idx], idx) + coinChange(coins, amount, idx + 1)
+//}
+
+private func coinChange(_ coins: [Int], _ amount: Int) -> Int {
+    if amount < 0 {return 0}
+    if amount == 0 {return 1 }
     // means coins over and n>0 so no solution
-    if idx == coins.count && amount > 0 { return 0 }
-    
-    return coinChange(coins, amount - coins[idx], idx) + coinChange(coins, amount, idx + 1)
+    if coins.isEmpty && amount > 0 {return 0}
+    return coinChange(coins, amount - coins[0]) + coinChange(Array(coins[1...]), amount)
 }
 
 /*
  Time Complexity : 2^n
- 
 */
 
 let myCoins = [1,2,3]
-let amount = 5
-coinChange(myCoins, amount, 0)
+let amount = 4
+coinChange(myCoins, amount)
+
