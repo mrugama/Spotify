@@ -12,21 +12,16 @@ Question 2 -- decodeString(s): Given an encoded string, return its corresponding
 private func decodeString(_ encode: String) -> String {
     let arrEncode = Array(encode)
     var finalStr = ""
-    let digits = CharacterSet.decimalDigits
-    //var newStr = ""
     guard encode.count > 1 else {return encode}
-    if digits.contains(arrEncode[0].unicodeScalars.first!) {
-        guard let num = Int(String(arrEncode[0])) else {return finalStr}
+    if let num = Int(String(arrEncode.first!)) {
         for _ in 1...num {
             for i in arrEncode.indices {
-                if i == 0 {continue}
-                if arrEncode[i] == "[" || arrEncode[i] == "]" { continue }
-                if digits.contains(arrEncode[i].unicodeScalars.first!) {
+                if arrEncode[i] == "[" || arrEncode[i] == "]" || i == 0 { continue }
+                if let _ = Int(String(arrEncode[i])) {
                     finalStr += decodeString(arrEncode[i...].map{String($0)}.joined())
                     break
-                } else {
-                    finalStr.append(String(arrEncode[i]))
                 }
+                finalStr.append(String(arrEncode[i]))
             }
         }
     }
@@ -34,5 +29,5 @@ private func decodeString(_ encode: String) -> String {
 }
 
 decodeString("4[ab]") //expected: abababab
-decodeString("2[b2[a3[q]]]") //expected: baaabaaa
+decodeString("2[b3[a]]") //expected: baaabaaa
 
