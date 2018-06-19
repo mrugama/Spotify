@@ -87,7 +87,7 @@ extension CalendarVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}
+        let eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}.sorted(by: {$0.startTime < $1.startTime})
         if eventsByDay.isEmpty {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath) as? EmptyEventTVCell {
                 cell.configureCell()

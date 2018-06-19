@@ -21,8 +21,9 @@ class EventTVCell: UITableViewCell {
     lazy var startLbl: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.red
         label.text = "From: "
+        label.textAlignment = .left
         return label
     }()
     
@@ -30,14 +31,16 @@ class EventTVCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00:00:00"
+        label.textAlignment = .left
         return label
     }()
     
     lazy var endLbl: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.red
         label.text = "to: "
+        label.textAlignment = .left
         return label
     }()
     
@@ -45,6 +48,7 @@ class EventTVCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "00:00:00"
+        label.textAlignment = .left
         return label
     }()
     
@@ -53,7 +57,7 @@ class EventTVCell: UITableViewCell {
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis  = UILayoutConstraintAxis.horizontal
         stView.distribution  = UIStackViewDistribution.fillEqually
-        stView.alignment = UIStackViewAlignment.center
+        stView.alignment = UIStackViewAlignment.leading
         stView.spacing = 2.0
         return stView
     }()
@@ -63,7 +67,7 @@ class EventTVCell: UITableViewCell {
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis  = UILayoutConstraintAxis.horizontal
         stView.distribution  = UIStackViewDistribution.fillEqually
-        stView.alignment = UIStackViewAlignment.center
+        stView.alignment = UIStackViewAlignment.leading
         stView.spacing = 2.0
         return stView
     }()
@@ -100,7 +104,11 @@ class EventTVCell: UITableViewCell {
             stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)])
         
         stackView.addArrangedSubview(startStack)
+        NSLayoutConstraint.activate([
+            startStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.30)])
         stackView.addArrangedSubview(endStack)
+        NSLayoutConstraint.activate([
+            endStack.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.30)])
         startStack.addArrangedSubview(startLbl)
         startStack.addArrangedSubview(starTimeLbl)
         endStack.addArrangedSubview(endLbl)
