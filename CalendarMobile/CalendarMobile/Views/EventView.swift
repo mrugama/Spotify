@@ -10,25 +10,17 @@ import UIKit
 
 class EventView: UIView {
     
-    lazy var eventImage: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = #imageLiteral(resourceName: "icoCalendar_64x64")
-        return image
-    }()
-    
-    lazy var txtLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "No events or tasks"
-        label.textAlignment = .center
-        return label
+    lazy var eventListTV: UITableView = {
+        let tv = UITableView()
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.rowHeight = 120
+        tv.backgroundColor = UIColor(displayP3Red: 255/255, green: 180/255, blue: 0.0, alpha: 1.0)
+        return tv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        self.backgroundColor = UIColor(displayP3Red: 255/255, green: 180/255, blue: 0.0, alpha: 1.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,16 +28,12 @@ class EventView: UIView {
     }
     
     private func setupViews() {
-        addSubview(eventImage)
+        addSubview(eventListTV)
         NSLayoutConstraint.activate([
-            eventImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            eventImage.centerYAnchor.constraint(equalTo: self.centerYAnchor)])
-        
-        eventImage.addSubview(txtLabel)
-        NSLayoutConstraint.activate([
-            txtLabel.topAnchor.constraint(equalTo: eventImage.bottomAnchor),
-            txtLabel.centerXAnchor.constraint(equalTo: eventImage.centerXAnchor)])
-        
+            eventListTV.topAnchor.constraint(equalTo: self.topAnchor),
+            eventListTV.leftAnchor.constraint(equalTo: self.leftAnchor),
+            eventListTV.rightAnchor.constraint(equalTo: self.rightAnchor),
+            eventListTV.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
     }
     
 }

@@ -43,7 +43,7 @@ class AddEventView: UIView {
         let stView = UIStackView()
         stView.translatesAutoresizingMaskIntoConstraints = false
         stView.axis  = UILayoutConstraintAxis.vertical
-        stView.distribution  = UIStackViewDistribution.fillEqually
+        stView.distribution  = UIStackViewDistribution.fill
         stView.alignment = UIStackViewAlignment.center
         stView.spacing   = 0.0
         return stView
@@ -67,12 +67,6 @@ class AddEventView: UIView {
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)])
-        
-        //,
-//        stackView.topAnchor.constraint(equalTo: self.topAnchor),
-//        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-//        stackView.leftAnchor.constraint(equalTo: self.leftAnchor),
-//        stackView.rightAnchor.constraint(equalTo: self.rightAnchor)
         
         stackView.addArrangedSubview(descriptionTxtField)
         stackView.addArrangedSubview(startTime)

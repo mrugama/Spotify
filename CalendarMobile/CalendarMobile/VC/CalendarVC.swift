@@ -12,7 +12,14 @@ class CalendarVC: UIViewController {
     
     let calendarView = CalendarView()
     let eventView = EventView()
-    let addEventView = AddEventView()
+    
+    var events = [Event]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.eventView.eventListTV.reloadData()
+            }
+        }
+    }
     
     lazy var stackView: UIStackView = {
         let stView = UIStackView()
@@ -28,7 +35,44 @@ class CalendarVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         menuTabBar()
-        addEventView.submitBtn.addTarget(self, action: #selector(saveTask), for: .touchUpInside)
+        initCalendarView()
+        initEventView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        EventAPIClient.manager.getEvents(completionHandler: { (eventOnline) in
+            self.events = eventOnline
+        }, errorHandler: {print($0)})
+    }
+    
+    private func initCalendarView() {
+        calendarView.calendarCV.delegate = self
+        calendarView.calendarCV.dataSource = self
+        calendarView.calendarCV.backgroundColor = .white
+        
+        calendarView.currentMonthIndex = Calendar.current.component(.month, from: Date())
+        calendarView.currentYear = Calendar.current.component(.year, from: Date())
+        calendarView.todaysDate = Calendar.current.component(.day, from: Date())
+        calendarView.firstWeekDayOfMonth = GetDate.getFirstWeekDay(year: calendarView.currentYear, month: calendarView.currentMonthIndex)
+        
+        // Check for leap years
+        if calendarView.currentMonthIndex == 2 && calendarView.currentYear % 4 == 0 {
+            calendarView.numOfDaysInMonth[calendarView.currentMonthIndex] = 29
+        }
+        
+        calendarView.presentMonthIndex = calendarView.currentMonthIndex
+        calendarView.presentYear = calendarView.currentYear
+        
+        // selected cell at today
+        calendarView.calendarCV.selectItem(at: IndexPath(row: calendarView.todaysDate + calendarView.firstWeekDayOfMonth - 2, section: 0), animated: true, scrollPosition: .left)
+    }
+    
+    private func initEventView() {
+        eventView.eventListTV.register(EventTVCell.self, forCellReuseIdentifier: "event")
+        eventView.eventListTV.register(EmptyEventTVCell.self, forCellReuseIdentifier: "empty")
+        eventView.eventListTV.delegate = self
+        eventView.eventListTV.dataSource = self
     }
     
     private func menuTabBar() {
@@ -38,15 +82,13 @@ class CalendarVC: UIViewController {
     }
     
     @objc private func addTask() {
-        UIView.animate(withDuration: 0.5) {
-            self.addEventView.layer.opacity = 1.0
-        }
-    }
-    
-    @objc private func saveTask() {
-        UIView.animate(withDuration: 0.5) {
-            self.addEventView.layer.opacity = 0.0
-        }
+        let addEventVC = AddEventVC()
+        let year = calendarView.currentYear
+        let month = calendarView.currentMonthIndex
+        let day = calendarView.todaysDate
+        addEventVC.addEventView.startTime.date = "\(year)-\(month)-\(day)".toDate!
+        addEventVC.addEventView.endTime.date = "\(year)-\(month)-\(day)".toDate!
+        navigationController?.present(addEventVC, animated: true, completion: nil)
     }
     
     private func setupViews() {
@@ -73,15 +115,6 @@ class CalendarVC: UIViewController {
             eventView.leftAnchor.constraint(equalTo: view.leftAnchor),
             eventView.rightAnchor.constraint(equalTo: view.rightAnchor),
             eventView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
-        
-        view.addSubview(addEventView)
-        addEventView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            addEventView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            addEventView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            addEventView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
-            addEventView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8)])
-        addEventView.layer.opacity = 0.0
 
     }
 }

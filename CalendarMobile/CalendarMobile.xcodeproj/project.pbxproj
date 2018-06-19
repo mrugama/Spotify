@@ -17,12 +17,17 @@
 		819D6E3F20D561060057CA28 /* CalendarMobileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E3E20D561060057CA28 /* CalendarMobileUITests.swift */; };
 		819D6E5020D563750057CA28 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E4F20D563750057CA28 /* CalendarView.swift */; };
 		819D6E5320D5962F0057CA28 /* DayCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5220D5962F0057CA28 /* DayCVCell.swift */; };
-		819D6E5520D59C190057CA28 /* CalendarView+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5420D59C190057CA28 /* CalendarView+Delegate.swift */; };
 		819D6E5820D5F67F0057CA28 /* GetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5720D5F67F0057CA28 /* GetDate.swift */; };
 		819D6E5A20D600670057CA28 /* WeekdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5920D600670057CA28 /* WeekdaysView.swift */; };
 		819D6E5D20D615F50057CA28 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5C20D615F50057CA28 /* EventView.swift */; };
 		819D6E5F20D6F1830057CA28 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E5E20D6F1830057CA28 /* AddEventView.swift */; };
 		819D6E6120D71DB80057CA28 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6020D71DB80057CA28 /* AddEventVC.swift */; };
+		819D6E6320D72BC30057CA28 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6220D72BC30057CA28 /* NetworkHelper.swift */; };
+		819D6E6520D72C120057CA28 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6420D72C120057CA28 /* Event.swift */; };
+		819D6E6720D767900057CA28 /* EventAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6620D767900057CA28 /* EventAPIClient.swift */; };
+		819D6E6B20D83F4D0057CA28 /* EventTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6A20D83F4D0057CA28 /* EventTVCell.swift */; };
+		819D6E6D20D848980057CA28 /* EmptyEventTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6C20D848980057CA28 /* EmptyEventTVCell.swift */; };
+		819D6E6F20D87AE00057CA28 /* CalendarVC+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819D6E6E20D87AE00057CA28 /* CalendarVC+Delegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +64,17 @@
 		819D6E4020D561060057CA28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		819D6E4F20D563750057CA28 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		819D6E5220D5962F0057CA28 /* DayCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCVCell.swift; sourceTree = "<group>"; };
-		819D6E5420D59C190057CA28 /* CalendarView+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarView+Delegate.swift"; sourceTree = "<group>"; };
 		819D6E5720D5F67F0057CA28 /* GetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDate.swift; sourceTree = "<group>"; };
 		819D6E5920D600670057CA28 /* WeekdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdaysView.swift; sourceTree = "<group>"; };
 		819D6E5C20D615F50057CA28 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		819D6E5E20D6F1830057CA28 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		819D6E6020D71DB80057CA28 /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
+		819D6E6220D72BC30057CA28 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		819D6E6420D72C120057CA28 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		819D6E6620D767900057CA28 /* EventAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAPIClient.swift; sourceTree = "<group>"; };
+		819D6E6A20D83F4D0057CA28 /* EventTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTVCell.swift; sourceTree = "<group>"; };
+		819D6E6C20D848980057CA28 /* EmptyEventTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventTVCell.swift; sourceTree = "<group>"; };
+		819D6E6E20D87AE00057CA28 /* CalendarVC+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarVC+Delegates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				819D6E1D20D561040057CA28 /* CalendarVC.swift */,
+				819D6E6E20D87AE00057CA28 /* CalendarVC+Delegates.swift */,
 				819D6E6020D71DB80057CA28 /* AddEventVC.swift */,
 			);
 			path = VC;
@@ -169,7 +180,6 @@
 			children = (
 				819D6E5120D595FE0057CA28 /* Cells */,
 				819D6E4F20D563750057CA28 /* CalendarView.swift */,
-				819D6E5420D59C190057CA28 /* CalendarView+Delegate.swift */,
 				819D6E5920D600670057CA28 /* WeekdaysView.swift */,
 				819D6E5C20D615F50057CA28 /* EventView.swift */,
 				819D6E5E20D6F1830057CA28 /* AddEventView.swift */,
@@ -181,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				819D6E5220D5962F0057CA28 /* DayCVCell.swift */,
+				819D6E6A20D83F4D0057CA28 /* EventTVCell.swift */,
+				819D6E6C20D848980057CA28 /* EmptyEventTVCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 		819D6E5620D5F63D0057CA28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				819D6E6420D72C120057CA28 /* Event.swift */,
 				819D6E5720D5F67F0057CA28 /* GetDate.swift */,
 			);
 			path = Models;
@@ -196,6 +209,8 @@
 		819D6E5B20D60D8C0057CA28 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				819D6E6220D72BC30057CA28 /* NetworkHelper.swift */,
+				819D6E6620D767900057CA28 /* EventAPIClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -335,13 +350,18 @@
 				819D6E1E20D561040057CA28 /* CalendarVC.swift in Sources */,
 				819D6E1C20D561040057CA28 /* AppDelegate.swift in Sources */,
 				819D6E5D20D615F50057CA28 /* EventView.swift in Sources */,
+				819D6E6320D72BC30057CA28 /* NetworkHelper.swift in Sources */,
+				819D6E6F20D87AE00057CA28 /* CalendarVC+Delegates.swift in Sources */,
 				819D6E5020D563750057CA28 /* CalendarView.swift in Sources */,
 				819D6E5F20D6F1830057CA28 /* AddEventView.swift in Sources */,
+				819D6E6D20D848980057CA28 /* EmptyEventTVCell.swift in Sources */,
 				819D6E6120D71DB80057CA28 /* AddEventVC.swift in Sources */,
+				819D6E6B20D83F4D0057CA28 /* EventTVCell.swift in Sources */,
 				819D6E5320D5962F0057CA28 /* DayCVCell.swift in Sources */,
 				819D6E5A20D600670057CA28 /* WeekdaysView.swift in Sources */,
+				819D6E6720D767900057CA28 /* EventAPIClient.swift in Sources */,
 				819D6E2420D561040057CA28 /* CalendarMobile.xcdatamodeld in Sources */,
-				819D6E5520D59C190057CA28 /* CalendarView+Delegate.swift in Sources */,
+				819D6E6520D72C120057CA28 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
