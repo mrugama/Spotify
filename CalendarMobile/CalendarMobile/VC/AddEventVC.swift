@@ -16,21 +16,20 @@ class AddEventVC: UIViewController {
         super.viewDidLoad()
         setupViews()
         addEventView.submitBtn.addTarget(self, action: #selector(saveTask), for: .touchUpInside)
-        //addEventView.delegate = self
+        addEventView.closeBtn.addTarget(self, action: #selector(closeAddEvent), for: .touchUpInside)
     }
     
     @objc private func saveTask() {
         //let calendarVC = CalendarVC()
         guard let task = addEventView.descriptionTxtField.text else {return}
-        let startTime = addEventView.startTime.date //.toTimeInt
-        let endTime = addEventView.endTime.date //.toTimeInt
+        let startTime = addEventView.startTime.date
+        let endTime = addEventView.endTime.date
         let eventTask = Event(id: nil, startTime: startTime, endTime: endTime, task: task)
         EventAPIClient.manager.post(event: eventTask, errorHandler: {print($0)})
-//        EventAPIClient.manager.getEvents(completionHandler: { (eventOnline) in
-//            calendarVC.events = eventOnline
-//        }, errorHandler: {print($0)})
-        //calendarVC.events.append(eventTask)
-        //calendarVC.eventView.eventListTV.reloadData()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func closeAddEvent() {
         self.dismiss(animated: true, completion: nil)
     }
     

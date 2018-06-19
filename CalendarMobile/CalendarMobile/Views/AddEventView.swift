@@ -39,6 +39,13 @@ class AddEventView: UIView {
         return btn
     }()
     
+    lazy var closeBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setImage(#imageLiteral(resourceName: "icoClose_32x32"), for: .normal)
+        return btn
+    }()
+    
     lazy var stackView: UIStackView = {
         let stView = UIStackView()
         stView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +62,7 @@ class AddEventView: UIView {
         self.layer.borderWidth = 2.0
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = 5
-        self.backgroundColor = UIColor(displayP3Red: 246/255, green: 81/255, blue: 29/255, alpha: 1.0)
+        self.backgroundColor = UIColor(displayP3Red: 0.0, green: 166/255, blue: 237/255, alpha: 1.0)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,9 +76,17 @@ class AddEventView: UIView {
             stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)])
         
         stackView.addArrangedSubview(descriptionTxtField)
+        NSLayoutConstraint.activate([
+            descriptionTxtField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            descriptionTxtField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15)])
         stackView.addArrangedSubview(startTime)
         stackView.addArrangedSubview(endTime)
         stackView.addArrangedSubview(submitBtn)
+        
+        addSubview(closeBtn)
+        NSLayoutConstraint.activate([
+            closeBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            closeBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)])
     }
     
 }
