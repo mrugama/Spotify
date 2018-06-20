@@ -35,7 +35,7 @@ private func coinChange(_ coins: [Int], _ amount: Int) -> Int {
  Time Complexity : 2^n
 */
 
-let myCoins = [1,2,3,4]
-let amount = 5
+let myCoins = [2, 5, 3, 6]
+let amount = 10
 coinChange(myCoins, amount)
 

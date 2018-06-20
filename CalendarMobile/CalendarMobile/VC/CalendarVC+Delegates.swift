@@ -59,9 +59,8 @@ extension CalendarVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
-            let event = eventsByDay[indexPath.row]
+            let event = self.eventsByDay[indexPath.row]
             EventAPIClient.manager.delete(id: event.id!, errorHandler: {print($0)})
             EventAPIClient.manager.getEvents(completionHandler: { (eventOnline) in
                 self.events = eventOnline
@@ -79,7 +78,6 @@ extension CalendarVC: UITableViewDelegate {
 // MAR:- TableView Datasource
 extension CalendarVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}
         if eventsByDay.isEmpty {
             return 1
         }
@@ -87,7 +85,6 @@ extension CalendarVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}.sorted(by: {$0.startTime < $1.startTime})
         if eventsByDay.isEmpty {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "empty", for: indexPath) as? EmptyEventTVCell {
                 cell.configureCell()

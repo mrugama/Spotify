@@ -15,6 +15,12 @@ class CalendarVC: UIViewController {
     
     var events = [Event]() {
         didSet {
+            self.eventsByDay = events.filter{$0.startTime.toDay == calendarView.todaysDate}.sorted(by: {$0.startTime < $1.startTime})
+        }
+    }
+    
+    var eventsByDay = [Event]() {
+        didSet {
             DispatchQueue.main.async {
                 self.eventView.eventListTV.reloadData()
             }
