@@ -40,7 +40,7 @@ struct EventAPIClient {
             let encodedOrder = try JSONEncoder().encode(event)
             authPostRequest.httpBody = encodedOrder
             NetworkHelper.manager.performDataTask(with: authPostRequest,
-                                                  completionHandler: {_ in print("Made a post request")},
+                                                  completionHandler: {response in print("Made a post request"); print("Response:", String(data: response, encoding: .utf8)!)},
                                                   errorHandler: errorHandler)
         }
         catch {
@@ -52,7 +52,7 @@ struct EventAPIClient {
         let urlStr = "http://5b27c4b362e42b0014915702.mockapi.io/events/\(id)"
         guard let authPostRequest = buildAuthRequest(from: urlStr, httpVerb: .DELETE) else {errorHandler(AppError.badURL); return }
         NetworkHelper.manager.performDataTask(with: authPostRequest,
-                                              completionHandler: {_ in print("Made a post request")},
+                                              completionHandler: {_ in print("Made a Delete request")},
                                               errorHandler: errorHandler)
     }
     
